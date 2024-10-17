@@ -55,3 +55,15 @@ connected_clients:
 使用 Client Config 前，需要将 Interface Address 和 Peer Endpoint 分别修改为客户端的 IP 和 EasyTier 节点的 IP。将配置文件导入 WireGuard 客户端，即可访问 EasyTier 网络。
 
 ---
+p.s.通常情况来说，各种设备以及系统默认防火墙出站全允许所以组网不会有影响，但如果某些系统出现打开 VPN 的 portal 之后使用 WireGuard 的设备不能正常ping通其他设备的话，需要自行为 Easytier 设置防火墙出站规则。
+```sh
+# 以 win 系统为例，按 win + R 打开运行，输入
+wf.msc
+```
+![image](https://github.com/user-attachments/assets/2d0843ae-4fbf-4077-99a3-a91fc6f70537)
+
+打开高级防火墙设置，然后建立出站规则，选取 easytier 的 gui 程序/服务项，为需要的协议，如 UDP , TCP 等设置允许连接的出站规则。
+![image](https://github.com/user-attachments/assets/eafa7a2f-d7bb-4839-9961-e92421acb4ef)
+
+之后整个组网即恢复正常。
+一般来说各厂商的服务器就算是 win 系统也默认全部允许出站，所以主要针对 win 系统的个人设备补充此条目。
